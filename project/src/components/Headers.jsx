@@ -12,7 +12,6 @@ const Headers = () => {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     if (isLoggingOut) {
       const logout = async () => {
@@ -45,7 +44,7 @@ const Headers = () => {
   const Register = () => (
     <Link
       to="/register"
-      className="w-full text-[.75rem] leading-4 sm:text-[.875rem] sm:leading-5"
+      className="w-full text-[.75rem] hover:underline leading-4 sm:text-[.875rem] sm:leading-5"
     >
       Create Account
     </Link>
@@ -57,7 +56,7 @@ const Headers = () => {
 
   const Logout = () => (
     <p
-      className="cursor-pointer hover:bg-b5 text-b5 border-b5 hover:text-white transition dark:text-pink-btn border-solid dark:hover:bg-pink-btn dark:hover:text-black dark:border-pink-btn border p-1 rounded-lg flex justify-center items-center text-[.75rem] font-semibold leading-4 sm:text-[.875rem] sm:leading-5"
+      className="cursor-pointer uppercase  hover:bg-b5 text-b5 border-b5 hover:text-white transition dark:text-pink-btn border-solid dark:hover:bg-pink-btn dark:hover:text-black dark:border-pink-btn border  rounded-lg flex justify-center items-center text-sm/3 p-1 font-semibold "
       onClick={handleLogout}
     >
       Logout
@@ -70,7 +69,7 @@ const Headers = () => {
         <li className="text-xs sm:text-sm hover:underline">
           {username ? <span>Hello, {username} </span> : <Login />}
         </li>
-        <li className="text-xs sm:text-sm hover:underline">
+        <li className="text-xs sm:text-sm ">
           {username ? <Logout /> : <Register />}
         </li>
       </ul>

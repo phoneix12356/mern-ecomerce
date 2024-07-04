@@ -66,7 +66,7 @@ const Login = () => {
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="inline-flex shrink h-12 px-4 leading-6 border dark:border-[hsl(60,30%,96%,0.2)] dark:bg-[#272935] rounded-lg opacity-100"
+          className="inline-flex shrink h-12  leading-6  dark:bg-[#272935] rounded-lg  border px-4 border-ol1 dark:border-ol2  border-opacity-20 focus:outline focus:outline-ol1 dark:focus:outline-ol2 focus:outline-2 focus:outline-offset-2  "
         />
         <label className="dark:text-[hsl(60,30%,96%,1)] leading-5 text-sm">
           Password
@@ -75,7 +75,7 @@ const Login = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="flex shrink h-12 px-4 leading-6 border dark:border-[hsl(60,30%,96%,0.2)] dark:bg-[#272935] rounded-lg bg-opacity-100"
+          className="flex shrink h-12  leading-6  dark:bg-[#272935] rounded-lg border px-4 border-ol1 dark:border-ol2  border-opacity-20 focus:outline focus:outline-ol1 dark:focus:outline-ol2 focus:outline-2 focus:outline-offset-2 "
         />
         <button
           onClick={(event) => handleLoginRequest(event, email, password)}

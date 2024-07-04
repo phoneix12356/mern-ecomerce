@@ -8,6 +8,7 @@ import {
 } from "../features/cart/CartSlice";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
   const list = useSelector((state) => state.cart.productList);
@@ -45,11 +46,11 @@ const Checkout = () => {
 
   if (!list.length) {
     return (
-      <div className=" px-8 py-20 max-w-6xl w-full mx-auto flex flex-col gap-8">
-        <h1 className="text-3xl w-full  text-b1 dark:text-white font-medium tracking-wider">
+      <div className="px-8 py-20 max-w-6xl w-full mx-auto flex flex-col gap-8">
+        <h1 className="text-3xl w-full text-b1 dark:text-white font-medium tracking-wider">
           Your Cart is empty
         </h1>
-        <div className="bg-b6  w-full dark:bg-black h-[0.5px]"></div>
+        <div className="bg-b6 w-full dark:bg-black h-[0.5px]"></div>
       </div>
     );
   }
@@ -86,6 +87,7 @@ const Checkout = () => {
 
   const handleSubmitRequest = async (e) => {
     e.preventDefault();
+    if (!address || !name) return toast.error("Both field required");
     const now = new Date();
     const formattedDate = formatDate(now);
     try {
@@ -103,14 +105,14 @@ const Checkout = () => {
       console.log(err);
     }
   };
+
   return (
-    <div className="w-full h-full text-white ">
+    <div className="w-full h-full dark:text-white">
       <div className="max-w-6xl mx-auto px-8 py-20">
         <h1 className="text-3xl h-14 tracking-wider capitalize font-medium border-b dark:border-black">
-          {" "}
-          place your order{" "}
+          place your order
         </h1>
-        <main className="grid grid-flow-row md:grid-cols-2 mt-8 gap-8 ">
+        <main className="grid grid-flow-row md:grid-cols-2 mt-8 gap-8">
           <form
             className="flex flex-col gap-y-3"
             onSubmit={handleSubmitRequest}
@@ -125,7 +127,7 @@ const Checkout = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              className="bg-transparent border dark:border-[hsl(60,30%,96%,0.2)]  rounded-lg mb-2  h-12"
+              className="shrink bg-transparent border px-4 border-ol1 dark:border-ol2  border-opacity-20 focus:outline focus:outline-ol1 dark:focus:outline-ol2 focus:outline-2 focus:outline-offset-2   rounded-lg mb-2 h-12 "
             />
             <label htmlFor="address" className="text-sm">
               Address
@@ -134,38 +136,38 @@ const Checkout = () => {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               type="text"
-              className="bg-transparent border dark:border-[hsl(60,30%,96%,0.2)]  rounded-lg mb-2 h-12"
+              className="shrink bg-transparent border px-4 border-ol1 dark:border-ol2  border-opacity-20 focus:outline focus:outline-ol1 dark:focus:outline-ol2 focus:outline-2 focus:outline-offset-2   rounded-lg mb-2 h-12 "
             />
+
             <Link
               to="/order"
               onClick={handleSubmitRequest}
               type="submit"
-              className="dark:bg-pink-btn uppercase dark:text-black/80 flex items-center justify-center font-medium rounded-lg h-12"
+              className="dark:bg-pink-btn bg-b5 text-white uppercase dark:text-black/80 flex items-center justify-center font-medium rounded-lg h-12"
             >
               Place Your Order
             </Link>
           </form>
 
-          <div className="bg-b2   dark:bg-[hsl(231,15%,11%,1)]  w-full max-h-48 p-8  rounded-2xl">
+          <div className="bg-b2 dark:bg-[hsl(231,15%,11%,1)] w-full max-h-48 p-8 rounded-2xl">
             <ul className="flex flex-col basis-auto">
               <li className="flex justify-between text-xs pb-2">
-                <span>Subtotal</span>{" "}
+                <span>Subtotal</span>
                 <span className="font-medium">${subtotal.toFixed(2)}</span>
               </li>
-
-              <li className=" w-full h-[0.1px] dark:bg-black/50s mb-2"></li>
+              <li className="w-full h-[0.1px] dark:bg-black/50 mb-2"></li>
               <li className="flex text-xs justify-between pb-2">
-                Shipping{" "}
-                <span className="font-medium ">${shipping.toFixed(2)}</span>
+                Shipping
+                <span className="font-medium">${shipping.toFixed(2)}</span>
               </li>
-              <li className="  w-full h-[0.1px] dark:bg-black/50 mb-2"></li>
-              <li className="flex text-xs justify-between pb-2 ">
-                Tax <span className="font-medium ">${tax.toFixed(2)}</span>
+              <li className="w-full h-[0.1px] dark:bg-black/50 mb-2"></li>
+              <li className="flex text-xs justify-between pb-2">
+                Tax <span className="font-medium">${tax.toFixed(2)}</span>
               </li>
-              <li className=" dark:bg-black/50 w-full h-[0.1px] mb-2 "></li>
+              <li className="dark:bg-black/50 w-full h-[0.1px] mb-2"></li>
               <li className="flex text-xs justify-between mt-4 pb-2">
-                Order Total{" "}
-                <span className="font-medium ">${total.toFixed(2)}</span>
+                Order Total
+                <span className="font-medium">${total.toFixed(2)}</span>
               </li>
             </ul>
           </div>

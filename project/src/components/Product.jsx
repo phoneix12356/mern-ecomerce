@@ -195,7 +195,7 @@ const Product = () => {
             value={localFilters.searchQuery}
             onKeyDown={handleEnterQuery}
             onChange={handleSearchQuery}
-            className="h-8 dark:bg-[#272935] border-solid px-2 dark:border-[#3C3E48] border-[1.9px] rounded-lg"
+            className="h-8 dark:bg-[#272935] border-solid  dark:border-[#3C3E48]  rounded-lg border px-4 border-ol1 dark:border-ol2  border-opacity-20 focus:outline focus:outline-ol1 dark:focus:outline-ol2 focus:outline-2 focus:outline-offset-2 "
           />
         </li>
         <li className="flex flex-col w-[full]">
@@ -208,7 +208,7 @@ const Product = () => {
                 categoryQuery: e.target.value,
               }))
             }
-            className="h-8 dark:bg-[#272935] border-solid px-2 dark:border-[#3C3E48] border-[1.9px] rounded-lg"
+            className="h-8 dark:bg-[#272935] border-solid  dark:border-[#3C3E48]  rounded-lg border px-4 border-ol1 dark:border-ol2  border-opacity-20 focus:outline focus:outline-ol1 dark:focus:outline-ol2 focus:outline-2 focus:outline-offset-2"
           >
             <option value="all">all</option>
             <option value="Tables">Tables</option>
@@ -228,7 +228,7 @@ const Product = () => {
                 companyQuery: e.target.value,
               }))
             }
-            className="h-8 dark:bg-[#272935] border-solid px-2 dark:border-[#3C3E48] border-[1.9px] rounded-lg"
+            className="h-8 dark:bg-[#272935]  dark:border-[#3C3E48]  rounded-lg border px-4 border-ol1 dark:border-ol2  border-opacity-20 focus:outline focus:outline-ol1 dark:focus:outline-ol2 focus:outline-2 focus:outline-offset-2  "
           >
             <option value="all">all</option>
             <option value="Modenza">Modenza</option>
@@ -248,7 +248,7 @@ const Product = () => {
                 sortmethod: e.target.value,
               }))
             }
-            className="h-8 dark:bg-[#272935] border-solid px-2 dark:border-[#3C3E48] border-[1.9px] rounded-lg"
+            className="h-8 dark:bg-[#272935]  dark:border-[#3C3E48]  rounded-lg border px-4 border-ol1 dark:border-ol2  border-opacity-20 focus:outline focus:outline-ol1 dark:focus:outline-ol2 focus:outline-2 focus:outline-offset-2  " 
           >
             <option value="a-z">a-z</option>
             <option value="z-a">z-a</option>

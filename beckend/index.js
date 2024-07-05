@@ -12,9 +12,7 @@ const OrderRoute = require("./routes/order");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
 
-ConnectionToDatabase(
-  "mongodb+srv://kartikayagarwal41:0Bp4WKHFUJ2EiK9z@cluster0.6lulj6j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-)
+ConnectionToDatabase(process.env.MONGODB_URL)
   .then(() => console.log("connection successfull"))
   .catch((err) => console.log(err));
 

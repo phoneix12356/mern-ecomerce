@@ -1,6 +1,7 @@
 const UsersModel = require("../models/registration");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs"); 
+
 const authenticateToken = (req, res, next) => {
   const { token } = req.cookies;
   if (token) {

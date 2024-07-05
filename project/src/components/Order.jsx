@@ -5,10 +5,11 @@ import PuffLoader from "react-spinners/PuffLoader";
 const Order = () => {
   const [orderList, setOrderList] = useState([]);
   const [isLoading, setLoading] = useState(0);
+  const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
   const handleOrderList = async () => {
     try {
       setLoading(1);
-      const res = await axios.get("/orders/api/order");
+      const res = await axios.get(`${API_URL}/orders/api/order`);
       setLoading(0);
       setOrderList([...res.data]);
     } catch (err) {

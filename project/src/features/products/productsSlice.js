@@ -1,9 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
+const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
+
 export const AsyncFetchAllProducts = createAsyncThunk(
   "productsData/AsyncFetching",
   async () => {
-    const resp = await axios.get("/data/api/products");
+    const resp = await axios.get(`${API_URL}/data/api/products`);
     return resp.data;
   }
 );

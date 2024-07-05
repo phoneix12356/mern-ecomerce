@@ -90,8 +90,9 @@ const Checkout = () => {
     if (!address || !name) return toast.error("Both field required");
     const now = new Date();
     const formattedDate = formatDate(now);
+    const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
     try {
-      await axios.post("/orders/api/order", {
+      await axios.post(`${API_URL}/orders/api/order`, {
         name: name,
         address: address,
         date: formattedDate,

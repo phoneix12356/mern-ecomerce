@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
 export const fetchUserDetail = createAsyncThunk(
   "user/fetchUserDetailsFromBackend",
   async () => {
-    const res = await axios.get("/api/profile");
+    const res = await axios.get(`${API_URL}/api/profile`);
     return res.data;
   }
 );

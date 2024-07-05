@@ -8,12 +8,16 @@ const { ConnectionToDatabase } = require("./connections/connection");
 
 require("dotenv").config();
 
+// CORS configuration
+app.use(
+  cors({
+    origin: "https://your-vercel-frontend-domain.vercel.app", // Update this to your Vercel frontend URL
+    credentials: true,
+  })
+);
+
 // Middleware
-app.use(cors({
-  origin: 'https://mern-ecomerce-33cc-5fsf02016-kartikay-agarwals-projects.vercel.app/', // Replace with your actual frontend URL
-  credentials: true
-}));
-app.use("/assests", express.static(path.join(__dirname, "assests")));
+app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -32,10 +36,10 @@ app.use("/orders", OrderRoute);
 
 // Connect to Database and Start Server
 ConnectionToDatabase(process.env.MONGODB_URL)
-  .then(() => console.log("connection successful"))
-  .catch((err) => console.log(err));
+  .then(() => console.log("Database connection successful"))
+  .catch((err) => console.log("Database connection error:", err));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server is working at port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

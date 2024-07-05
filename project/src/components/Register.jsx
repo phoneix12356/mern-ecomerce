@@ -10,6 +10,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [animation, setAnimation] = useState(0);
+  const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
 
   const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ const Register = () => {
     e.preventDefault();
     setAnimation(1);
     try {
-      await axios.post("/api/signup", {
+      await axios.post(`${API_URL}/api/signup`, {
         username,
         email,
         password,

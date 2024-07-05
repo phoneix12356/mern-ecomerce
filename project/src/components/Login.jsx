@@ -19,6 +19,7 @@ const Login = () => {
   const handleLoginRequest = async (event, email, password) => {
     event.preventDefault();
     const data = { email, password };
+    const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
 
     if (!data.email || !data.password) {
       toast.error("Please enter both email and password");
@@ -26,10 +27,10 @@ const Login = () => {
     }
 
     setAnimation(1);
-
+ 
     try {
-      await axios.post("/api/login", data);
-      const userDetails = await axios.get("/api/profile");
+      await axios.post(`${API_URL}/api/login`, data);
+      const userDetails = await axios.get(`${API_URL}/api/profile`);
       dispatch(UpdateUserName({ username: userDetails.data.username }));
       setItem(userDetails.data.username);
       if (email !== "guestuser@email.com") {

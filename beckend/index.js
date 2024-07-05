@@ -17,7 +17,7 @@ app.use(
 );
 
 // Middleware
-app.use("/assets", express.static(path.join(__dirname, "assets")));
+app.use("/assests", express.static(path.join(__dirname, "assests")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

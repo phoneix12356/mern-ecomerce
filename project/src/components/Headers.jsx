@@ -11,12 +11,13 @@ const Headers = () => {
   const username = getItem();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const dispatch = useDispatch();
+  const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
 
   useEffect(() => {
     if (isLoggingOut) {
       const logout = async () => {
         try {
-          await axios.get("/api/logout");
+          await axios.get(`${API_URL}/api/logout`);
           removeItem();
           dispatch(UpdateUserName({ username: "" }));
           dispatch(EmptyProductList({}));

@@ -10,7 +10,7 @@ require("dotenv").config();
 
 // Middleware
 app.use(cors({
-  origin: 'https://your-frontend-url.https://mern-ecomerce-33cc-5fsf02016-kartikay-agarwals-projects.vercel.app/', // Replace with your actual frontend URL
+  origin: 'https://mern-ecomerce-33cc-5fsf02016-kartikay-agarwals-projects.vercel.app/', // Replace with your actual frontend URL
   credentials: true
 }));
 app.use("/assests", express.static(path.join(__dirname, "assests")));

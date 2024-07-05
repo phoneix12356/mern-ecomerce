@@ -9,6 +9,7 @@ import {
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import {changePage} from '../features/page/Page'
 
 const Checkout = () => {
   const list = useSelector((state) => state.cart.productList);
@@ -86,7 +87,6 @@ const Checkout = () => {
   };
 
   const handleSubmitRequest = async (e) => {
-    e.preventDefault();
     if (!address || !name) return toast.error("Both field required");
     const now = new Date();
     const formattedDate = formatDate(now);
@@ -101,6 +101,7 @@ const Checkout = () => {
       dispatch(DeleteItemofUserCart({ pid: -1 }));
       dispatch(fetchUserCart());
       dispatch(updateCartSize());
+      dispatch(changePage(6));
     } catch (err) {
       console.log(err);
     }
@@ -142,7 +143,6 @@ const Checkout = () => {
             <Link
               to="/order"
               onClick={handleSubmitRequest}
-              type="submit"
               className="dark:bg-pink-btn bg-b5 text-white uppercase dark:text-black/80 flex items-center justify-center font-medium rounded-lg h-12"
             >
               Place Your Order

@@ -40,7 +40,7 @@ const Order = () => {
         </h2>
         <table className="w-full text-left">
           <thead className="w-full">
-            <tr className="text-xs font-bold  text-[hsl(214,30%,32%,0.5)] dark:text-[hsl(60,30%,96%,0.6)] [&>th]:px-4 [&>th]:py-3 border-b border-b6 dark:border-black/50">
+            <tr className="text-xs font-bold  text-[hsl(214,30%,32%,0.5)] dark:text-[hsl(60,30%,96%,0.6)] [&>th]:px-4 [&>th]:py-3 border-b border-b-b6 dark:border-b-black">
               <th>Name</th>
               <th>Address</th>
               <th>Products</th>
@@ -54,7 +54,7 @@ const Order = () => {
               : orderList.map((val, index) => {
                   return (
                     <tr
-                      className="w-full min-h-10 text-xs max-w-6xl even:bg-b2 text-black/50  dark:even:bg-[#181920] dark:text-white/90 [&>th]:px-4 [&>th]:py-3 border-b6 dark:border-black/50 "
+                      className="w-full min-h-10 text-xs max-w-6xl even:bg-b2 text-black/50  dark:even:bg-[#181920] dark:text-white/90 [&>th]:px-4 [&>th]:py-3 border-b-b6 dark:border-b-black "
                       key={index}
                     >
                       <th>{val.name}</th>

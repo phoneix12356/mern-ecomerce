@@ -1,14 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import PuffLoader from "react-spinners/PuffLoader";
 
 const Order = () => {
   const [orderList, setOrderList] = useState([]);
+  const [isLoading, setLoading] = useState(0);
   const handleOrderList = async () => {
     try {
+      setLoading(1);
       const res = await axios.get("/orders/api/order");
-
+      setLoading(0);
       setOrderList([...res.data]);
     } catch (err) {
+      setLoading(0);
       console.log(err);
     }
   };
@@ -17,17 +21,20 @@ const Order = () => {
     handleOrderList();
   }, []);
 
-  if (!orderList.length) {
+  if (!orderList.length && !isLoading) {
     return (
       <div className=" px-8 py-20 max-w-6xl w-full mx-auto flex flex-col gap-8">
         <h1 className="text-3xl w-full  text-b1/85 dark:text-white font-medium tracking-wider">
-         Please make an order
+          Please make an order
         </h1>
         <div className="bg-b6  w-full dark:bg-black h-[0.5px]"></div>
       </div>
     );
+  } else if (isLoading) {
+    <div className="w-full h-full flex justify-center items-center">
+      <PuffLoader color="white" />
+    </div>;
   }
-
   return (
     <div className="w-full h-full">
       <div className="w-full max-w-6xl mx-auto px-8 py-20 text-black dark:text-white  ">

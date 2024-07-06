@@ -11,7 +11,7 @@ require("dotenv").config();
 // CORS configuration
 app.use(
   cors({
-    origin: "https://your-vercel-frontend-domain.vercel.app", // Update this to your Vercel frontend URL
+    origin: "https://mern-ecomerce-33cc.vercel.app/", // Update this to your Vercel frontend URL
     credentials: true,
   })
 );

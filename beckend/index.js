@@ -8,15 +8,16 @@ const { ConnectionToDatabase } = require("./connections/connection");
 
 require("dotenv").config();
 
-// Error logging middleware
+
 app.use((req, res, next) => {
+  
   console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
   next();
 });
 
 app.use(
   cors({
-    origin: "https://mern-ecomerce-33cc.vercel.app/",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );

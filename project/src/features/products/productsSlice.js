@@ -28,7 +28,7 @@ const AllproductSlice = createSlice({
         state.status = "Successfull";
         state.List = [...action.payload];
       })
-      .addCase(AsyncFetchAllProducts.rejected, (state, action) => {
+      .addCase(AsyncFetchAllProducts.rejected, (state) => {
         state.status = "rejected";
       });
   },

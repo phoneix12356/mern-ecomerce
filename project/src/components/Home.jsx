@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { AsyncFetchAllProducts } from "../features/products/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import PuffLoader from "react-spinners/PuffLoader";
+import { DataOFALLProducts } from "../features/cart/CartSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -14,9 +15,17 @@ const Home = () => {
   const Images = [img1, img2, img3, img4];
 
   useEffect(() => {
-    dispatch(AsyncFetchAllProducts({}));
+    dispatch(AsyncFetchAllProducts({}))
+      .unwrap()
+      .then((data) => {
+        dispatch(DataOFALLProducts({ data }));
+      })
+      .catch((error) => {
+        console.error("Failed to fetch products:", error);
+      });
   }, [dispatch]);
 
+  
   if (status === "Loading")
     return (
       <div className="w-full h-full flex justify-center items-center">

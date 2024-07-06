@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { data } from "../../data";
+
 import {
   fetchDataByUserId,
   AddDataToUserCart,
@@ -8,6 +8,7 @@ import {
 } from "./Cartapi";
 
 const initialState = {
+  data: [],
   username: "",
   productList: [],
   cartSize: 0,
@@ -73,6 +74,9 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    DataOFALLProducts: (state, action) => {
+      state.data = action.payload.data;
+    },
     UpdateUserName: (state, action) => {
       state.username = action.payload.username;
     },
@@ -98,7 +102,7 @@ const cartSlice = createSlice({
       .addCase(fetchUserCart.fulfilled, (state, action) => {
         let list = [];
         let arr = action.payload ? action.payload : [];
-       
+        const data = state.data;
         for (let i = 0; i < data.length; i++) {
           for (let j = 0; j < arr.length; j++) {
             if (data[i].id === Number(arr[j].productid)) {
@@ -127,7 +131,10 @@ const cartSlice = createSlice({
           });
           cartSlice.caseReducers.updateCartSize(state);
         } else {
-          console.error('AddItemToUserCart fulfilled with invalid payload:', action.payload);
+          console.error(
+            "AddItemToUserCart fulfilled with invalid payload:",
+            action.payload
+          );
         }
       })
       .addCase(AddItemToUserCart.rejected, (state, action) => {
@@ -148,7 +155,10 @@ const cartSlice = createSlice({
           }
           cartSlice.caseReducers.updateCartSize(state);
         } else {
-          console.error('UpdateItemToUserCart fulfilled with invalid payload:', action.payload);
+          console.error(
+            "UpdateItemToUserCart fulfilled with invalid payload:",
+            action.payload
+          );
         }
       })
       .addCase(UpdateItemToUserCart.rejected, (state, action) => {
@@ -163,7 +173,10 @@ const cartSlice = createSlice({
           );
           cartSlice.caseReducers.updateCartSize(state);
         } else {
-          console.error('DeleteItemofUserCart fulfilled with invalid payload:', action.payload);
+          console.error(
+            "DeleteItemofUserCart fulfilled with invalid payload:",
+            action.payload
+          );
         }
       })
       .addCase(DeleteItemofUserCart.rejected, (state, action) => {
@@ -176,6 +189,11 @@ const cartSlice = createSlice({
   },
 });
 
-export const { UpdateUserName, EmptyProductList, NumberOfItemInCart , updateCartSize } =
-  cartSlice.actions;
+export const {
+  DataOFALLProducts,
+  UpdateUserName,
+  EmptyProductList,
+  NumberOfItemInCart,
+  updateCartSize,
+} = cartSlice.actions;
 export default cartSlice.reducer;

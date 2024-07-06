@@ -9,12 +9,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 express().use(cookieParser());
-express().use(
-  cors({
-    credentials: true,
-    origin: "http://localhost:3000",
-  })
-);
+
 
 router.post("/api/signup", authController.signup);
 router.post("/api/login", authenticationMiddleware, authController.login);

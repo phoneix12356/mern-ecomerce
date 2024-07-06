@@ -20,7 +20,8 @@ app.use(
     origin: [
       "https://mern-ecomerce-33cc.vercel.app",
       "https://www.mern-ecomerce-33cc.vercel.app",
-      "http://localhost:3000"
+      "http://localhost:3000",
+      "https://mern-ecomerce-lime.vercel.app/"
     ],
     credentials: true,
   })

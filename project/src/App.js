@@ -12,8 +12,9 @@ import Order from "./components/Order";
 import ProductDescription from "./components/ProductDescription";
 import { useSelector } from "react-redux";
 import Checkout from "./components/Checkout";
-
+import axios from 'axios';
 const App = () => {
+  axios.defaults.withCredentials = true;
   const product = useSelector((state) => state.products.product);
   const mode = useSelector((state) => state.mode.darkMode);
   

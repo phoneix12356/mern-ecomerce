@@ -4,7 +4,7 @@ const getUserCart = async (req, res) => {
   try {
     const UserId = req.body.id;
     const cart = await UserCart.find({ UserId });
-    console.log("user cart get request ke andar ");
+   
     return res.status(202).json(cart);
   } catch (error) {
     console.log(error);
@@ -16,7 +16,7 @@ const updateUserCart = async (req, res) => {
   const UserId = req.body.id;
   const productid = req.body.pid;
   const quantity = Number(req.body.quantity);
-  console.log("user cart patch request ke andar", UserId, productid, quantity);
+ 
   if (!UserId || !productid || !quantity) {
     return res.status(400).json({ error: "koi field khali hai" });
   }
@@ -34,7 +34,7 @@ const updateUserCart = async (req, res) => {
 };
 
 const addToUserCart = async (req, res) => {
-  console.log("post request ke andar");
+  
   const UserId = req.body.id;
   const productid = req.body.pid;
   const quantity = Number(req.body.quantity);

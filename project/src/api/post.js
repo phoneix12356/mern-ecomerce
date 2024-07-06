@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://mern-ecomerce-lime.vercel.app/",
+  baseURL:  "http://localhost:8000/" ,
   withCredentials: true,
 });

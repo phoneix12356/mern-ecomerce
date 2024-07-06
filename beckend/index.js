@@ -43,6 +43,7 @@ app.use("/orders", OrderRoute);
 app.use((err, req, res, next) => {
   console.error(`${new Date().toISOString()} - Error:`, err);
   res.status(500).json({ error: "Internal Server Error", details: err.message });
+  
 });
 
 // Connect to Database and Start Server

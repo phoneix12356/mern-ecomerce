@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
+const API_URL = "https://mern-ecomerce-lime.vercel.app/";
 
 export const AsyncFetchAllProducts = createAsyncThunk(
   "productsData/AsyncFetching",

@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
+const API_URL = "https://mern-ecomerce-lime.vercel.app/";
 
 const fetchDataByUserId = async () => {
   const response = await axios.get(`${API_URL}/cart/api/user`);

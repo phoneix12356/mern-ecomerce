@@ -5,7 +5,7 @@ import PuffLoader from "react-spinners/PuffLoader";
 const Order = () => {
   const [orderList, setOrderList] = useState([]);
   const [isLoading, setLoading] = useState(0);
-  const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
+  const API_URL = "https://mern-ecomerce-lime.vercel.app/";
   const handleOrderList = async () => {
     try {
       setLoading(1);

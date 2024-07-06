@@ -10,7 +10,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [animation, setAnimation] = useState(0);
-  const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
+  const API_URL = "https://mern-ecomerce-lime.vercel.app/";
 
   const navigate = useNavigate();
 

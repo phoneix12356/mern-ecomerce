@@ -11,7 +11,7 @@ const Headers = () => {
   const username = getItem();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const dispatch = useDispatch();
-  const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
+  const API_URL = "https://mern-ecomerce-lime.vercel.app/";
 
   useEffect(() => {
     if (isLoggingOut) {

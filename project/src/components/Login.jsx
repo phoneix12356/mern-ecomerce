@@ -19,7 +19,7 @@ const Login = () => {
   const handleLoginRequest = async (event, email, password) => {
     event.preventDefault();
     const data = { email, password };
-    const API_URL = "https://mern-ecomerce-5tzn.onrender.com";
+    const API_URL = "https://mern-ecomerce-lime.vercel.app/";
 
     if (!data.email || !data.password) {
       toast.error("Please enter both email and password");

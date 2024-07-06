@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-const API_URL = "https://mern-ecomerce-lime.vercel.app/";
+import api from "../../api/post";
 export const fetchUserDetail = createAsyncThunk(
   "user/fetchUserDetailsFromBackend",
   async () => {
-    const res = await axios.get(`${API_URL}/api/profile`);
+    const res = await api.get("/api/profile");
     return res.data;
   }
 );

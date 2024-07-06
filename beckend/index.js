@@ -8,10 +8,15 @@ const { ConnectionToDatabase } = require("./connections/connection");
 
 require("dotenv").config();
 
-// CORS configuration
+// Error logging middleware
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+  next();
+});
+
 app.use(
   cors({
-    origin: "https://mern-ecomerce-33cc.vercel.app/", // Update this to your Vercel frontend URL
+    origin: "https://mern-ecomerce-33cc.vercel.app/",
     credentials: true,
   })
 );
@@ -34,12 +39,18 @@ app.use("/data", DataRoute);
 app.use("/cart", CartRoute);
 app.use("/orders", OrderRoute);
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(`${new Date().toISOString()} - Error:`, err);
+  res.status(500).json({ error: "Internal Server Error", details: err.message });
+});
+
 // Connect to Database and Start Server
 ConnectionToDatabase(process.env.MONGODB_URL)
-  .then(() => console.log("Database connection successful"))
-  .catch((err) => console.log("Database connection error:", err));
+  .then(() => console.log(`${new Date().toISOString()} - Database connection successful`))
+  .catch((err) => console.error(`${new Date().toISOString()} - Database connection error:`, err));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`${new Date().toISOString()} - Server is running on port ${PORT}`);
 });

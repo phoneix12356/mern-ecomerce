@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "../hooks/localstorage";
-import axios from "axios";
+import api from '../api/post';
 import { UpdateUserName, EmptyProductList } from "../features/cart/CartSlice";
 import { toast } from "react-toastify";
 
@@ -11,13 +11,11 @@ const Headers = () => {
   const username = getItem();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const dispatch = useDispatch();
-  const API_URL = "https://mern-ecomerce-lime.vercel.app/";
-
   useEffect(() => {
     if (isLoggingOut) {
       const logout = async () => {
         try {
-          await axios.get(`${API_URL}/api/logout`);
+          await api.get("/api/logout");
           removeItem();
           dispatch(UpdateUserName({ username: "" }));
           dispatch(EmptyProductList({}));

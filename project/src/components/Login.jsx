@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import { ImSpinner8 } from "react-icons/im";
 import { useLocalStorage } from "../hooks/localstorage";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import api from '../api/post';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,8 +20,6 @@ const Login = () => {
   const handleLoginRequest = async (event, email, password) => {
     event.preventDefault();
     const data = { email, password };
-    const API_URL = "https://mern-ecomerce-lime.vercel.app/";
-
     if (!data.email || !data.password) {
       toast.error("Please enter both email and password");
       return;
@@ -29,8 +28,8 @@ const Login = () => {
     setAnimation(1);
  
     try {
-      await axios.post(`${API_URL}/api/login`, data);
-      const userDetails = await axios.get(`${API_URL}/api/profile`);
+      await api.post("/api/login", data);
+      const userDetails = await api.get("/api/profile");
       dispatch(UpdateUserName({ username: userDetails.data.username }));
       setItem(userDetails.data.username);
       if (email !== "guestuser@email.com") {

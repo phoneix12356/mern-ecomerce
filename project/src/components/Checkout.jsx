@@ -6,10 +6,11 @@ import {
   fetchUserCart,
   updateCartSize,
 } from "../features/cart/CartSlice";
-import axios from "axios";
+
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import {changePage} from '../features/page/Page'
+import api from '../api/post';
 
 const Checkout = () => {
   const list = useSelector((state) => state.cart.productList);
@@ -90,9 +91,8 @@ const Checkout = () => {
     if (!address || !name) return toast.error("Both field required");
     const now = new Date();
     const formattedDate = formatDate(now);
-    const API_URL = "https://mern-ecomerce-lime.vercel.app/";
     try {
-      await axios.post(`${API_URL}/orders/api/order`, {
+      await api.post("/orders/api/order", {
         name: name,
         address: address,
         date: formattedDate,

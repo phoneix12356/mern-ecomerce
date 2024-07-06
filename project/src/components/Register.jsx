@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from '../api/post';
 import { toast } from "react-toastify";
 import { ImSpinner8 } from "react-icons/im";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,7 +10,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [animation, setAnimation] = useState(0);
-  const API_URL = "https://mern-ecomerce-lime.vercel.app/";
+  
 
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const Register = () => {
     e.preventDefault();
     setAnimation(1);
     try {
-      await axios.post(`${API_URL}/api/signup`, {
+      await api.post("/api/signup", {
         username,
         email,
         password,

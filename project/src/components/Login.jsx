@@ -99,7 +99,7 @@ const Login = () => {
         </button>
         <button
           onClick={(e) =>
-            handleLoginRequest(e, "guestuser@email.com", "123456")
+            handleLoginRequest(e, "guestuser@gmail.com", "GuestUser@12345")
           }
           className="w-full text-t4 bg-b3 bg-opacity-100 border-opacity-100 text-opacity-100 dark:border-[hsl(269,89%,78%,1)] dark:bg-[hsl(269,89%,78%,1)] dark:outline-[hsl(269,89%,78%,1)] flex shrink cursor-pointer flex-wrap justify-center items-center text-center rounded-lg h-12 px-4 text-sm leading-[1em] min-h-12 font-semibold uppercase dark:text-[hsl(328,26%,15%,1)] border gap-2 ease-out duration-200"
         >
